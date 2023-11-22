@@ -27,6 +27,13 @@
       <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script><![endif]-->
+      <style>
+         /* Optional: add some styling to the hidden element */
+         #human, #plant 
+         {
+            display: none;
+         }
+     </style>
 
    </head>
    <!-- body -->
@@ -77,7 +84,7 @@
             <div class="row">
                <div class="col-md-12">
                   <div class="titlepage text_align_center ">
-                     <h2>Example Cell</h2>
+                     <h2>An example cell viewed under a microscope</h2>
                   </div>
                </div>
             </div>
@@ -86,28 +93,28 @@
                   <div id="ho_shad" class="services_box text_align_left">
                      <h3>Animal Cell</h3>
                      <figure><img src="images/animalcell.png" alt="#" style="width: 400px;"/></figure>
-                     <p>Human : Cheek cells</p>
-                     <ul>
+                     <p>Human : Cheek cells (400x magnification)</p>
+                     <ul id="human">
                         <li>- Consists of nucleus, cytoplasm and cell membrane</li>
                         <li>- Has an irregular shape</li>
                         <li>- Smaller size</li>
                      </ul>
                      <br>
-                     <a class="read_more" href="service.html">Read More</a>
+                     <button class="read_more" onclick="toggleHuman(this)">Read More</button>
                   </div>
                </div>
                <div class="col-md-4">
                   <div id="ho_shad" class="services_box text_align_left">
                      <h3>Plant Cell</h3>
                      <figure><img src="images/plantcell.png" alt="#" style="width: 400px;"/></figure>
-                     <p>Vegetables : Onion cells</p>
-                     <ul>
+                     <p>Vegetables : Onion cells (400x magnification)</p>
+                     <ul id="plant">
                         <li>- Consists of nucleus, cytoplasm and cell membrane, cell wall, vacuole</li>
                         <li>- Has a fixed shape</li>
                         <li>- Larger size</li>
                      </ul>
                      <br>                     
-                     <a class="read_more" href="service.html">Read More</a>
+                     <button class="read_more" onclick="togglePlant(this)">Read More</button>
                   </div>
                </div>
                <!-- <div class="col-md-4">
@@ -119,6 +126,7 @@
                   </div>
                </div> -->
             </div>
+            <br>
          </div>
       </div>
       <!-- end services -->
@@ -210,3 +218,44 @@
       <script src="js/custom.js"></script>
    </body>
 </html>
+
+<script>
+   document.addEventListener("DOMContentLoaded", function() {
+      // Initially hide the elements on page load
+      let human = document.getElementById("human");
+      let plant = document.getElementById("plant");
+
+      human.style.display = "none";
+      plant.style.display = "none";
+   });
+
+   let toggleHuman = button => {
+      let human = document.getElementById("human");
+      let humanCurrentDisplay = human.style.display;
+
+      if (humanCurrentDisplay === "none") {
+         // Show the element
+         human.style.display = "block";
+         button.innerText = "Hide Content";
+      } else {
+         // Hide the element
+         human.style.display = "none";
+         button.innerText = "Read More";
+      }
+   }
+
+   let togglePlant = button => {
+      let plant = document.getElementById("plant");
+      let plantCurrentDisplay = plant.style.display;
+
+      if (plantCurrentDisplay === "none") {
+         // Show the element
+         plant.style.display = "block";
+         button.innerText = "Hide Content";
+      } else {
+         // Hide the element
+         plant.style.display = "none";
+         button.innerText = "Read More";
+      }
+   }
+</script>
